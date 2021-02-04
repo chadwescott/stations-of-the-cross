@@ -1,10 +1,14 @@
 :root {
   --clr-normal-100: white;
+  --clr-normal-300: #333;
   --clr-normal-400: black;
   --clr-border: #901010;
+  --clr-border: #690069;
   --clr-primary: #5c1c0c;
+  --clr-primary: #690069;
   --clr-primary-text: white;
   --clr-accent: #901010;
+  --clr-accent: #690069;
   --clr-accent-text: #white;
   --clr-accent-text-shadow: #333;
   --clr-bg: linear-gradient(135deg, #fffedf, #fffdf1, #fffedf);
@@ -21,6 +25,7 @@
   --padding-bg: 3rem;
   --spacer: 0.75em;
   --fw-bold: 600;
+  --width-border: 0.15em;
   --min-logo-title-width: 14rem;
   --max-logo-title-width: 50rem;
 }
@@ -57,7 +62,7 @@ body {
   font-size: 2.2rem;
   font-size: clamp(1rem, 1.75vw, 2.5rem);
   font-family: var(--ff-main);
-  color: var(--clr-primary);
+  color: var(--clr-normal-300);
   line-height: 1.4;
   overflow: hidden;
   display: -webkit-box;
@@ -80,6 +85,20 @@ body {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
+}
+
+.container[vertical] {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: var(--spacer);
 }
 
 .vertically-centered {
@@ -110,7 +129,7 @@ body {
   bottom: calc(var(--padding-bg) / 2);
   left: calc(var(--padding-bg) / 2);
   right: calc(var(--padding-bg) / 2);
-  border: solid 4px var(--clr-border);
+  border: solid var(--width-border) var(--clr-border);
 }
 
 .church-bg {
@@ -195,6 +214,9 @@ body {
   padding: calc(var(--spacer) / 2) var(--spacer);
   color: var(--clr-primary-text);
   text-align: center;
+  -webkit-box-shadow: 0 0.15em 0.15em rgba(100, 0, 100, 0.4);
+          box-shadow: 0 0.15em 0.15em rgba(100, 0, 100, 0.4);
+  z-index: 10;
 }
 
 .header .station-number {
@@ -244,12 +266,53 @@ body {
   margin: var(--spacer);
 }
 
-.content .station-image {
-  width: 30%;
-}
-
 .content .station-image img {
   width: 100%;
+}
+
+.content .video {
+  position: relative;
+}
+
+.content .video::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: black;
+  border: solid var(--width-border) var(--clr-border);
+}
+
+.station-image {
+  width: 25%;
+}
+
+.station-image img {
+  width: 100%;
+  mix-blend-mode: multiply;
+  border: solid var(--width-border) var(--clr-border);
+}
+
+.station-title {
+  margin: var(--spacer);
+}
+
+.station-title div {
+  margin-bottom: var(--spacer);
+}
+
+.station-title div::before {
+  display: inline-block;
+  font-style: italic;
+  font-weight: var(--fw-bold);
+}
+
+.station-title .leader::before {
+  content: 'Leader:';
+}
+
+.station-title .response::before {
+  content: 'Response:';
 }
 
 .reading {
@@ -264,7 +327,7 @@ body {
   margin-bottom: var(--spacer);
 }
 
-.reading .leader::before {
+.reading .christ-speaks::before {
   content: 'Christ speaks:';
 }
 
