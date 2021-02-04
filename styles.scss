@@ -1,0 +1,352 @@
+:root {
+    --clr-normal-100: white;
+    --clr-normal-400: black;
+
+    // COLORS
+    // STANDARD
+    --clr-border: #901010;
+    --clr-primary: #5c1c0c;
+    --clr-primary-text: white;
+    --clr-accent: #901010;
+    --clr-accent-text: #white;
+    --clr-accent-text-shadow: #333;
+    --clr-bg: linear-gradient(135deg, #fffedf, #fffdf1, #fffedf);
+    --clr-bullet: #884d00;
+    --image-filter: none;
+
+    // FONT SIZES
+    --fs-400: 1em;
+    --fs-500: 1.3em;
+    --fs-600: 1.6em;
+    --fs-700: 2.4em;
+
+    // FONT FAMILIES
+    --ff-main: Arial, Helvetica, sans-serif;
+    --ff-title: Maitree, Georgia, 'Times New Roman', Times, serif;
+    --ff-station-number: Maitree, Georgia, 'Times New Roman', Times, serif;
+    --ff-station-description: Maitree, Georgia, 'Times New Roman', Times, serif;
+
+    --padding-bg: 3rem;
+    --spacer: 0.75em;
+
+    --fw-bold: 600;
+
+    --min-logo-title-width: 14rem;
+    --max-logo-title-width: 50rem;
+}
+
+@font-face {
+    font-family: 'Maitree';
+    src: url(./fonts/Maitree/Maitree-Regular.ttf);
+}
+
+// resets
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-size: 2.2rem;
+    font-size: clamp(1rem, 1.75vw, 2.5rem);
+    font-family: var(--ff-main);
+    color: var(--clr-primary);
+    line-height: 1.4;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.container {
+    background: var(--clr-bg);
+    display: flex;
+    flex-grow: 1;
+}
+
+.vertically-centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.bordered {
+    position: relative;
+    padding: var(--padding-bg);
+
+    &::after {
+        position: absolute;
+        content: '';
+        top: calc(var(--padding-bg) / 2);
+        bottom: calc(var(--padding-bg) / 2);
+        left: calc(var(--padding-bg) / 2);
+        right: calc(var(--padding-bg) / 2);
+        border: solid 4px var(--clr-border);
+    }
+}
+
+.church-bg {
+    position: relative;
+    background-image: url(../images/sttheodoremain-2.jpg);
+    background-size: cover;
+    z-index: 0;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: var(--clr-bg);
+        opacity: 0.9;
+        z-index: -1;
+    }
+}
+
+.title-page {
+    text-align: center;
+
+    &__logo {
+        filter: var(--image-filter);
+        margin-bottom: calc(var(--spacer) * 2);
+        width: 100%;
+
+        img {
+            width: var(--max-logo-title-width);
+            width: clamp(var(--min-logo-title-width), 40%, var(--max-logo-title-width));
+        }
+    }
+
+    &__title {
+        font-size: var(--fs-700);
+        color: var(--clr-accent);
+        text-shadow: 0.025em 0.025em var(--clr-accent-text-shadow);
+        line-height: 1.2;
+    }
+
+    &__date {
+        font-size: var(--fs-600);
+        font-style: italic;
+    }
+
+    &__image {
+        margin-top: var(--spacer);
+        height: 50%;
+
+        & img {
+            position: relative;
+            height: 100%;
+            mix-blend-mode: multiply;
+        }
+    }
+
+    &__quote {
+        position: relative;
+        margin-top: calc(var(--spacer) * 2);
+        color: var(--clr-accent);
+        font-style: italic;
+
+        &::before {
+            content: open-quote;
+        }
+
+        &::after {
+            content: close-quote;
+        }
+    }
+
+    &__verse {
+        font-weight: 600;
+    }
+}
+
+.header {
+    background: var(--clr-primary);
+    padding: calc(var(--spacer) / 2) var(--spacer);
+    color: var(--clr-primary-text);
+    text-align: center;
+
+    .station-number {
+        font-family: var(--ff-station-number);
+        font-style: italic;
+    }
+
+    .station-description {
+        font-family: var(--ff-station-description);
+        text-transform: uppercase;
+        font-weight: var(--fw-bold);
+    }
+}
+
+.heading {
+    position: relative;
+    display: inline-block;
+    font-size: var(--fs-600);
+    font-family: var(--ff-title);
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    margin-top: -0.2em;
+
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: 0.25em;
+        width: 100%;
+        border-bottom: 0.07em solid var(--clr-primary);
+    }
+}
+
+.content {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    margin: var(--spacer);
+
+    .station-image {
+        width: 30%;
+        img {
+            width: 100%;
+        }
+    }
+}
+
+.reading {
+    margin: var(--spacer);
+    width: 50%;
+
+    div::before {
+        display: inline-block;
+        font-style: italic;
+        font-weight: var(--fw-bold);
+        margin-bottom: var(--spacer);
+    }
+
+    .leader::before {
+        content: 'Christ speaks:';
+    }
+
+    .reply {
+        &::before {
+            content: 'I reply:';
+        }
+    }
+
+    p {
+        white-space: pre-line;
+
+        &:not(:last-child) {
+            margin-bottom: var(--spacer);
+        }
+    }
+}
+
+.float-spacer {
+    width: 0;
+    height: calc(100% - var(--image-height));
+
+    &-right {
+        float: right;
+    }
+
+    &-left {
+        float: left;
+    }
+
+    &-center {
+        float: right;
+        position: relative;
+        left: -50%;
+    }
+}
+
+.float-image {
+    &-right {
+        --float-dir: right;
+        --margin-left: var(--spacer);
+        --margin-right: 0;
+    }
+
+    &-left {
+        --float-dir: left;
+        --margin-left: 0;
+        --margin-right: var(--spacer);
+    }
+
+    &-center {
+        --float-dir: right;
+        position: relative;
+        right: 50%;
+        transform: translate(50%);
+        --margin-left: var(--spacer);
+        --margin-right: var(--spacer);
+    }
+
+    float: var(--float-dir);
+    clear: var(--float-dir);
+    margin-left: var(--margin-left);
+    margin-right: var(--margin-right);
+    height: var(--image-height);
+
+    & img {
+        position: relative;
+        height: 100%;
+        mix-blend-mode: multiply;
+    }
+}
+
+.dark-filter {
+    position: relative;
+    color: var(--clr-normal-100);
+    z-index: 0;
+    background: unset;
+
+    &::before {
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: -1;
+    }
+}
+
+.video {
+    position: relative;
+    height: 100%;
+    width: 100%;
+
+    &::before {
+        content: '';
+        position: absolute;
+        background-image: url(../images/sttheodores_header.png);
+        background-size: cover;
+        bottom: 0;
+        left: 0;
+        height: 4rem;
+        width: 16rem;
+        filter: var(--image-filter);
+    }
+}
+
+.image-circle {
+    img {
+        border-radius: 50%;
+    }
+}
