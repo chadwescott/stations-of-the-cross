@@ -11,7 +11,7 @@
   --clr-bg: linear-gradient(135deg, #fffedf, #fffdf1, #fffedf);
   --clr-bg: linear-gradient(135deg, #ffe0ff, #fffdff, #ffe0ff);
   --clr-bullet: #884d00;
-  --image-filter: hue-rotate(285deg);
+  --image-filter: hue-rotate(300deg);
   --fs-400: 1em;
   --fs-500: 1.3em;
   --fs-600: 1.6em;
@@ -26,10 +26,10 @@
   --width-border: 0.15em;
   --min-logo-title-width: 14rem;
   --max-logo-title-width: 50rem;
-  --box-shadow-h-offset: 0.15em;
-  --box-shadow-v-offset: 0.15em;
-  --box-shadow-spread: 0.15em;
-  --box-shadow-color: rgba(100, 0, 100, 0.4);
+  --box-shadow-h-offset: 0.25em;
+  --box-shadow-v-offset: 0.25em;
+  --box-shadow-spread: 0.5em;
+  --box-shadow-color: rgba(100, 0, 100, 0.3);
 }
 
 @font-face {
@@ -187,7 +187,7 @@ body {
 
 .title-page__title {
   font-size: var(--fs-700);
-  color: var(--clr-accent);
+  color: var(--clr-primary);
   text-shadow: 0.025em 0.025em var(--clr-accent-text-shadow);
   line-height: 1.2;
 }
@@ -284,6 +284,7 @@ body {
 }
 
 .station-image img {
+  background-color: var(--clr-primary);
   width: 100%;
   mix-blend-mode: multiply;
   border: solid var(--width-border) var(--clr-border);
