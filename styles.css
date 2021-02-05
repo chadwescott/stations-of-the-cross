@@ -17,12 +17,14 @@
   --fs-600: 1.6em;
   --fs-700: 2.4em;
   --ff-main: Arial, Helvetica, sans-serif;
+  --ff-main: 'Libre Baskerville', Georgia, 'Times New Roman', Times, serif;
   --ff-title: Maitree, Georgia, 'Times New Roman', Times, serif;
   --ff-station-number: Maitree, Georgia, 'Times New Roman', Times, serif;
   --ff-station-description: Maitree, Georgia, 'Times New Roman', Times, serif;
+  --ff-station-description: 'Libre Baskerville', Georgia, 'Times New Roman', Times, serif;
   --padding-bg: 3rem;
   --spacer: 0.75em;
-  --fw-bold: 600;
+  --fw-bold: 900;
   --width-border: 0.15em;
   --min-logo-title-width: 14rem;
   --max-logo-title-width: 50rem;
@@ -35,6 +37,11 @@
 @font-face {
   font-family: 'Maitree';
   src: url(./fonts/Maitree/Maitree-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'Libre Baskerville';
+  src: url("./fonts/Lbre Baskerville/LibreBaskerville-Regular.ttf");
 }
 
 *,
@@ -78,6 +85,10 @@ body {
           flex-grow: 1;
 }
 
+b {
+  font-weight: var(--fw-bold);
+}
+
 .container {
   background: var(--clr-bg);
   display: -webkit-box;
@@ -99,7 +110,7 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: var(--spacer);
+  padding: var(--spacer) var(--spacer) 0 var(--spacer);
 }
 
 .watermark {
