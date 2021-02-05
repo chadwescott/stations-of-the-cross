@@ -5,19 +5,16 @@
 
     // COLORS
     // STANDARD
-    --clr-border: #901010;
     --clr-border: #690069;
-    --clr-primary: #5c1c0c;
     --clr-primary: #690069;
     --clr-primary-text: white;
-    --clr-accent: #901010;
-    --clr-accent: #690069;
+    --clr-accent: #550086;
     --clr-accent-text: #white;
     --clr-accent-text-shadow: #333;
     --clr-bg: linear-gradient(135deg, #fffedf, #fffdf1, #fffedf);
-    // --clr-bg: linear-gradient(135deg, #ffe0ff, #fffdff, #ffe0ff);
+    --clr-bg: linear-gradient(135deg, #ffe0ff, #fffdff, #ffe0ff);
     --clr-bullet: #884d00;
-    --image-filter: none;
+    --image-filter: hue-rotate(285deg);
 
     // FONT SIZES
     --fs-400: 1em;
@@ -39,6 +36,11 @@
 
     --min-logo-title-width: 14rem;
     --max-logo-title-width: 50rem;
+
+    --box-shadow-h-offset: 0.15em;
+    --box-shadow-v-offset: 0.15em;
+    --box-shadow-spread: 0.15em;
+    --box-shadow-color: rgba(100, 0, 100, 0.4);
 }
 
 @font-face {
@@ -71,7 +73,6 @@ body {
     font-family: var(--ff-main);
     color: var(--clr-normal-300);
     line-height: 1.4;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -87,6 +88,22 @@ body {
         align-items: center;
         justify-content: center;
         padding: var(--spacer);
+    }
+}
+
+.watermark {
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        background-image: url(./images/sttheodores_header.png);
+        background-size: cover;
+        bottom: 0.25em;
+        right: 0.25em;
+        height: 1.5em;
+        width: 6em;
+        filter: var(--image-filter);
     }
 }
 
@@ -114,7 +131,7 @@ body {
 
 .church-bg {
     position: relative;
-    background-image: url(../images/sttheodoremain-2.jpg);
+    background-image: url(./images/sttheodoremain-2.jpg);
     background-size: cover;
     z-index: 0;
 
@@ -193,9 +210,12 @@ body {
     padding: calc(var(--spacer) / 2) var(--spacer);
     color: var(--clr-primary-text);
     text-align: center;
-    box-shadow: 0 0.15em 0.15em rgba(100, 0, 100, 0.4);
-    z-index: 10;
-    // border-bottom: solid var(--width-border) var(--clr-normal-100);
+    box-shadow: 0 var(--box-shadow-v-offset) var(--box-shadow-spread) var(--box-shadow-color);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     .station-number {
         font-family: var(--ff-station-number);
@@ -227,6 +247,20 @@ body {
     }
 }
 
+.station-image {
+    width: 25%;
+
+    img {
+        width: 100%;
+        mix-blend-mode: multiply;
+        border: solid var(--width-border) var(--clr-border);
+        border-radius: var(--spacer);
+        box-shadow: var(--box-shadow-h-offset) var(--box-shadow-v-offset) var(--box-shadow-spread)
+            var(--box-shadow-color);
+        z-index: 1;
+    }
+}
+
 .content {
     width: 50%;
     display: flex;
@@ -242,6 +276,8 @@ body {
     }
     .video {
         position: relative;
+        height: 100%;
+        width: 100%;
 
         &::before {
             content: '';
@@ -250,23 +286,13 @@ body {
             width: 100%;
             background: black;
             border: solid var(--width-border) var(--clr-border);
+            box-shadow: var(--box-shadow-h-offset) var(--box-shadow-v-offset) var(--box-shadow-spread)
+                var(--box-shadow-color);
         }
     }
 }
 
-.station-image {
-    width: 25%;
-
-    img {
-        width: 100%;
-        mix-blend-mode: multiply;
-        border: solid var(--width-border) var(--clr-border);
-    }
-}
-
 .station-title {
-    margin: var(--spacer);
-
     div {
         margin-bottom: var(--spacer);
 
@@ -278,12 +304,12 @@ body {
     }
 
     .leader::before {
-        content: 'Leader:';
+        content: 'Leader';
     }
 
     .response {
         &::before {
-            content: 'Response:';
+            content: 'Response';
         }
     }
 }
@@ -300,12 +326,12 @@ body {
     }
 
     .christ-speaks::before {
-        content: 'Christ speaks:';
+        content: 'Christ speaks';
     }
 
     .reply {
         &::before {
-            content: 'I reply:';
+            content: 'I reply';
         }
     }
 
@@ -385,24 +411,6 @@ body {
         width: 100%;
         background: rgba(0, 0, 0, 0.8);
         z-index: -1;
-    }
-}
-
-.video {
-    position: relative;
-    height: 100%;
-    width: 100%;
-
-    &::before {
-        content: '';
-        position: absolute;
-        background-image: url(../images/sttheodores_header.png);
-        background-size: cover;
-        bottom: 0;
-        left: 0;
-        height: 4rem;
-        width: 16rem;
-        filter: var(--image-filter);
     }
 }
 
