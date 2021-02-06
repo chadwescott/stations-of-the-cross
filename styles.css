@@ -305,6 +305,14 @@ b {
   z-index: 1;
 }
 
+.station-image[large] {
+  width: 75%;
+}
+
+.station-image[x-large] {
+  width: 90%;
+}
+
 .content {
   width: 50%;
   display: -webkit-box;
@@ -317,9 +325,6 @@ b {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
   margin: var(--spacer);
 }
 

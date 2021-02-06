@@ -271,6 +271,17 @@ b {
             var(--box-shadow-color);
         z-index: 1;
     }
+
+    &[large] {
+        width: 75%;
+
+        img {
+        }
+    }
+
+    &[x-large] {
+        width: 90%;
+    }
 }
 
 .content {
@@ -278,7 +289,6 @@ b {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-end;
     margin: var(--spacer);
 
     .station-image {
