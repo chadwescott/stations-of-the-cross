@@ -272,11 +272,16 @@ b {
         z-index: 1;
     }
 
+    &[booklet] {
+        width: 68%;
+    }
+
+    &[reply] {
+        width: 81%;
+    }
+
     &[large] {
         width: 75%;
-
-        img {
-        }
     }
 
     &[x-large] {
@@ -299,7 +304,7 @@ b {
     .video {
         position: relative;
         height: 100%;
-        width: 100%;
+        width: 75%;
 
         &::before {
             content: '';

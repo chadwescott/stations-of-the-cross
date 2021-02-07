@@ -305,6 +305,14 @@ b {
   z-index: 1;
 }
 
+.station-image[booklet] {
+  width: 68%;
+}
+
+.station-image[reply] {
+  width: 81%;
+}
+
 .station-image[large] {
   width: 75%;
 }
@@ -335,7 +343,7 @@ b {
 .content .video {
   position: relative;
   height: 100%;
-  width: 100%;
+  width: 75%;
 }
 
 .content .video::before {
